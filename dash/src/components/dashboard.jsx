@@ -1,6 +1,8 @@
+import testData from "@/assets/data.js";
+
 const Dashboard = () => {
   return (
-    <div>
+    <div className="absolute h-full overflow-y-scroll">
       <table className="w-full text-left">
         <thead className="border-b">
           <tr>
@@ -9,10 +11,16 @@ const Dashboard = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="border-b">
-            <td className="py-2">Pod A</td>
-            <td className="py-2">John, Ama</td>
-          </tr>
+          {testData.map((entry) => {
+            return (
+              <tr className="border-b">
+                <td className="py-2">{entry.pod}</td>
+                <td className="py-2">
+                  {entry.users.map((entry) => `${entry}, `)}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
